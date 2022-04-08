@@ -1,0 +1,34 @@
+# Super-MuSR test infrastructure [![Code Quality](https://github.com/DanNixon/supermusr-infra/actions/workflows/code_quality.yml/badge.svg?branch=main)](https://github.com/DanNixon/supermusr-infra/actions/workflows/code_quality.yml)
+
+## Deployment
+
+1. Install Ubuntu Server
+2. Ensure [inventory](./inventory.ini) is up to date
+3. `ansible-galaxy install -r requirements.yml`
+4. `ansible-playbook -K system.yml`
+5. (`ANSIBLE_ROLES_PATH=~/dotfiles/roles ansible-playbook -K dan.yml`)
+6. Create zpool with the script in the Storage section below
+
+## Storage
+
+```
+zpool create \
+  -o ashift=12 \
+  local_data \
+  raidz \
+    scsi-STOSHIBA_MG04SCA40ENY_1850A0UEF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_1860A0AKF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_1860A1YUF74E \
+  raidz \
+    scsi-STOSHIBA_MG04SCA40ENY_1860A1YVF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_18J0A1L3F74E \
+    scsi-STOSHIBA_MG04SCA40ENY_18J0A1P7F74E \
+  raidz \
+    scsi-STOSHIBA_MG04SCA40ENY_18M0A0SCF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_18M0A0SLF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_18M0A1F8F74E \
+  raidz \
+    scsi-STOSHIBA_MG04SCA40ENY_18M0A1F9F74E \
+    scsi-STOSHIBA_MG04SCA40ENY_18M0A1FAF74E \
+    scsi-STOSHIBA_MG04SCA40ENY_89V0A016F74E
+```

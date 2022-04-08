@@ -1,0 +1,10 @@
+---
+- name: User configuration for dan
+  hosts: all
+
+  vars:
+    ansible_user: dan
+
+  roles:
+    - tmux
+    - zsh
