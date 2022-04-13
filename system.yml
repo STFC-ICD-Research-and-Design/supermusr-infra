@@ -7,6 +7,7 @@
     - dannixon.system.system
     - dannixon.system.inspection_tools
     - dannixon.services.sshd
+    - archive_backup_mount
 
   tasks:
     - name: Ensure interactive users are present
