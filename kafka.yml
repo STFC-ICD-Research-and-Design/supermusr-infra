@@ -1,0 +1,50 @@
+---
+- name: Kafka broker configuration
+  hosts: all
+
+  tasks:
+    - name: Ensure Redpanda is installed
+      become: true
+      ansible.builtin.package:
+        name: redpanda
+        state: present
+
+    - name: Ensure Redpanda ZFS dataset is present
+      become: true
+      community.general.zfs:
+        name: local_data/redpanda
+        extra_zfs_properties:
+          mountpoint: /var/lib/redpanda/data
+        state: present
+
+    - name: Ensure Redpanda user owns data directory
+      become: true
+      ansible.builtin.file:
+        path: /var/lib/redpanda/data
+        owner: redpanda
+        group: redpanda
+
+    - name: Configure Redpanda
+      become: true
+      ansible.builtin.shell: |
+        sudo -u redpanda rpk redpanda mode production
+        sudo -u redpanda rpk config bootstrap --id 0 --self 0.0.0.0
+        sudo -u redpanda rpk redpanda tune all
+      when: redpanda_config | default(false)
+
+    - name: Ensure services are enabled and running
+      become: true
+      ansible.builtin.service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      loop:
+        - redpanda-tuner
+        - redpanda
+
+    - name: Ensure Kafka API is allowed through firewall
+      become: true
+      community.general.ufw:
+        rule: allow
+        port: 9092
+        proto: tcp

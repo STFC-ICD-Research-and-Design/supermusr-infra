@@ -2,12 +2,19 @@
 
 ## Deployment
 
+### System
+
 1. Install Ubuntu Server
 2. Ensure [inventory](./inventory.ini) is up to date
 3. `ansible-galaxy install -r requirements.yml`
 4. `ansible-playbook -K system.yml`
 5. (`ANSIBLE_ROLES_PATH=~/dotfiles/roles ansible-playbook -K dan.yml`)
 6. Create zpool with the script in the Storage section below
+
+### Kafka
+
+1. Run the `curl`/`sudo bash` dance described [here](https://docs.redpanda.com/docs/deployment/production-deployment/#step-1-install-the-binary)
+2. `ansible-playbook -K kafka.yml -e redpanda_config=true`
 
 ## Storage
 
