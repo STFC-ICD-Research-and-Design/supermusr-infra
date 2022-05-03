@@ -8,7 +8,7 @@
 2. Ensure [inventory](./inventory.ini) is up to date
 3. `ansible-galaxy install -r requirements.yml`
 4. `ansible-playbook -K system.yml`
-5. (`ANSIBLE_ROLES_PATH=~/dotfiles/roles ansible-playbook -K dan.yml`)
+5. (`ansible-playbook -K dan.yml`)
 6. Create zpool with the script in the Storage section below
 
 ### Kafka

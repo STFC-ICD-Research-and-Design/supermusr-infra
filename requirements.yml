@@ -2,3 +2,4 @@
 collections:
   - git+https://github.com/DanNixon/ansible-services.git
   - git+https://github.com/DanNixon/ansible-system.git
+  - git+https://github.com/DanNixon/dotfiles.git#/dotfiles

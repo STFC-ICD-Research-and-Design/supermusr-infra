@@ -6,5 +6,5 @@
     ansible_user: dan
 
   roles:
-    - tmux
-    - zsh
+    - dannixon.dotfiles.tmux
+    - dannixon.dotfiles.zsh
