@@ -30,3 +30,12 @@
       ansible.builtin.package:
         name: zfsutils-linux
         state: present
+
+    - name: Ensure misc packages are installed
+      become: true
+      ansible.builtin.package:
+        name:
+          - cmake
+          - make
+          - g++
+        state: present
