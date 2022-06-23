@@ -38,4 +38,5 @@
           - cmake
           - make
           - g++
+          - libhdf5-dev
         state: present
