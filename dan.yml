@@ -4,6 +4,7 @@
 
   vars:
     ansible_user: dan
+    zsh_ssh_auth_sock: false
 
   roles:
     - dannixon.dotfiles.git
