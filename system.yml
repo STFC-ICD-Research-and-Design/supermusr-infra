@@ -5,6 +5,7 @@
   roles:
     - dannixon.system.package_updates
     - dannixon.system.system
+    - dannixon.system.disable_swap
     - dannixon.system.inspection_tools
     - dannixon.system.interactive_users
     - dannixon.services.sshd
