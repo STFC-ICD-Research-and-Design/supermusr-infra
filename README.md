@@ -7,9 +7,10 @@
 1. Install Ubuntu Server
 2. Ensure [inventory](./inventory.ini) is up to date
 3. `ansible-galaxy install -r requirements.yml`
-4. `ansible-playbook -K system.yml`
-5. (`ansible-playbook -K dan.yml`)
-6. Create zpool with the script in the Storage section below
+4. Set `KUBECONFIG` environment variable to somewhere secure
+5. `ansible-playbook -K system.yml k8s.yml`
+6. (`ansible-playbook -K dan.yml`)
+7. Create zpool with the script in the Storage section below
 
 ### Kafka
 
