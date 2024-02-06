@@ -5,7 +5,7 @@
 ### System
 
 1. Install Ubuntu Server
-2. `sudo systemctl systemd-networkd-wait-online.service`
+2. Edit `/lib/systemd/system/systemd-networkd-wait-online.service`, adding `--any` to end of `ExecStart`
 
 ### Storage
 
@@ -15,3 +15,4 @@
 ### Kafka
 
 1. Follow the [Redpanda documentation](https://docs.redpanda.com/current/deploy/deployment-option/self-hosted/manual/production/production-deployment/?tab=tabs-1-debianubuntu)
+2. Edit broker address in `/etc/redpanda/redpanda-console-config.yaml`
