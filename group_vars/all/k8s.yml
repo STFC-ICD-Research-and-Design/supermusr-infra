@@ -1,4 +1,0 @@
----
-k3s_install_options:
-  INSTALL_K3S_VERSION: "v1.25.2+k3s1"
-  INSTALL_K3S_EXEC: "--disable=traefik"

@@ -1,3 +1,0 @@
-domain={{ secrets.archive_backup.domain }}
-username={{ secrets.archive_backup.username }}
-password={{ secrets.archive_backup.password }}
